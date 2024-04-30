@@ -1,5 +1,5 @@
 Link to video Demonstration: https://drive.google.com/file/d/1JkBM5mrSMo4YdwN1cVW8p56RR2GL3DEM/view?usp=sharing \
-This application requires Flask framework, flask_pymongo and also mongodb need to be installed locally to run this application.
+This application requires Flask framework, flask_pymongo  to run this application.
 I have used MongoDB atlas as a database to my application. \
 Built Frontend to call the Api's that i've built.\
 I have created UI modules to make use of the functionalities of this application.
