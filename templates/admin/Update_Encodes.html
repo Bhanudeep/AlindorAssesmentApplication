@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alindor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+      html
+      {
+        scroll-behavior: smooth;
+      }
+      hr
+      {
+        color:black;
+      }
+      body
+      {
+        background-image: url('/static/bg_image/admin.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      #div3
+      {
+        background-color: white;
+        position: relative;
+        opacity: 0.8;
+        border: 2px solid white;
+        border-radius: 10px;
+        top: 64px;
+      }
+      @media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu{ display: none; }
+  .navbar .nav-item:hover .nav-link{ color: #fff;  }
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+    </style>
+    <script type="text/javascript">
+      
+// ****************************************************************************************************************************
+
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <h5 style="padding-left: 2%;color: white;"> Welcome {{username}}</h5>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="color: white;">
+        &nbsp;&nbsp;&nbsp;
+        
+        <form class="form-inline">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" formaction="{{url_for('logout')}}">Logout</button>
+        </form>
+      </div>
+    </nav>
+    <div id="div1" class="container"> <!-- container div1 -->
+      <div id="div2" class="row">     <!-- container div2 -->
+        <div id="div3" name="div3" class="col">   <!-- container div3 -->
+          <div class="container" id="container1" name="container1" style="position: relative; border-radius:10px;">
+          <!-- Flash M -->
+            <center>
+              <h5 style="color: red">
+                  {% with messages = get_flashed_messages() %}          <!-- Flash Message division starts -->
+                   {% if messages %}
+                     {% for message in messages %}
+                      <br><br>
+                       {% if fail %}
+                          <div class="alert alert-danger" style="color: red;" role="alert">
+                              {{ message }}
+                          </div>
+                        {% else %}
+                          <div class="alert alert-success" role="alert">
+                              {{ message }}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                                   <!-- Flash Message division ends here -->
+              </h5>
+            </center>
+          </div>
+
+          {% if filenames %} 
+          <br>
+          <div class="container" id="container2" name="container2"> 
+            {% for filename in filenames %}
+            <center>
+              {{filename}}
+            </center>
+            {% endfor %}
+          </div>  
+
+          {% else %}  
+            <div class="container" id="container2" name="container2">      <!-- Starting of container-2  -->
+              <form name="create_folders" method="POST" enctype="multipart/form-data">           
+                <center>
+                  <h2 style="color:#540569">Job match score analysis</h2>
+                </center>
+                <br>
+                </h5>
+                
+                <span id="department_alert" style="color: red;"></span>
+                <label><h4 style="color: #040404;">Job description</h4></label>
+                <div class="input-group mb-3">
+                  <input name="Message" type="text" class="form-control" placeholder=" Enter job description" maxlength="9000" onkeyup="checkdepartment()" style="border-color: #090609" >
+                </div>
+                <span id="department_alert" style="color: red;"></span>
+                
+                <center>
+                  <div id="img_div">  <!-- image upload division -->
+                    <div class="input-group mb-3">
+                      <div class="custom-file" style="border: 1px solid red;">
+                        <input type="file" id="pdf" name="pdf" class="custom-file-input" capture="camera" accept=".pdf" onchange="img_info()" required>
+                        <label id="pdflabel" class="custom-file-label" for="inputGroupFile01" style="color: red;">Click Browse to select Resume then click Upload Resume button</label>
+                      </div>
+                    </div>  <!-- image upload division ends here -->
+                  <button type="submit" id="create_folders_button" formaction="/Update_Note" class="btn btn-primary" style="color: black;width: 240px;font-size: 22px;" >Upload Resume</button>
+                  <br>
+                  <br>
+                  <span id="submit_alert" style="color: green;font-size: 20px;"></span>
+                </center>
+                <br>
+                
+              </form>           
+            </div>
+            <br>
+            <!-- /container2 -->
+          {% endif %}
+        </div>      <!-- /container div3 -->
+      </div>      <!-- /container div2 -->
+    </div>      <!-- /container div1 -->
+  </body>
+</html>
