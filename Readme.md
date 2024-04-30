@@ -10,7 +10,7 @@ I have created UI modules to make use of the functionalities of this application
 5) I have adjusted the system role promt by testing various examples.
 Instructions to run  the application locally: \
 Set up MongoDB atlas credentails and create a database to connect with this application. \
-Set up your OpenAi api key, and MongoDB atlas api key.
+Set up your OpenAi api key, and MongoDB atlas api key. \
 pip install requrirements.txt \
 After successful installation of all the dependencies proceed to run the application using command "python app.py" . \
 
