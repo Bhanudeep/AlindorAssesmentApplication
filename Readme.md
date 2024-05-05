@@ -14,6 +14,6 @@ Instructions to run  the application locally: \
 Set up MongoDB atlas credentails and create a database to connect with this application. \
 Set up your OpenAi api key, and MongoDB atlas api key. \
 pip install requrirements.txt \
-After successful installation of all the dependencies proceed to run the application using command "python app.py" . \
+After successful installation of all the dependencies proceed to run the application using command "python app.py" . 
 
 I have attached a video to demonstrate how this application works.
